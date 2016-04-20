@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+import sys
+sys.path.append('../')
+
 import util
 import base64
 
