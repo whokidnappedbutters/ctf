@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys
-sys.path.append('../')
+sys.path.append('../lib/')
 
 import util
 import base64
