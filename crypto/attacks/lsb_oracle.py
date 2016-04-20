@@ -2,7 +2,7 @@
 
 import sys
 
-sys.path.append('../')
+sys.path.append('../lib/')
 
 from util import *
 import hashlib
@@ -14,8 +14,10 @@ SERVER = 'rabit.pwning.xxx'
 PORT = 7763
 
 # BEGIN should be >= 1
-BEGIN = 1
-END = 400
+#BEGIN = 1
+#END = 400
+BEGIN = 800
+END = 1024
 
 def send_value(s, N, C, exp):
     # Send first value
