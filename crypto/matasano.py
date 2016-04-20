@@ -32,6 +32,21 @@ def problem2():
         return False
     return True
 
+def problem3():
+
+    answer = "Cooking MC's like a pound of bacon"
+    s = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
+
+    s = util.frequency_attack1(s)
+    s = s.decode('hex')
+    print("Answer 3: {0}".format(s))
+
+    if s != answer:
+        print("Answer 3 incorrect")
+        return False
+    return True
+
+
 def main():
 
     ret = problem1()
@@ -39,6 +54,10 @@ def main():
         return
 
     ret = problem2()
+    if not ret:
+        return
+
+    ret = problem3()
     if not ret:
         return
 
