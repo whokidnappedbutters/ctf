@@ -10,6 +10,18 @@ import time
 import socket
 import re
 
+#######################################################################
+#
+# This code opens a TCP socket to SERVER on PORT so that it can query
+# an LSB oracle process.  The lsb data is written to a file so that
+# a separate script can be used to decrypt the plain text.
+#
+# NOTE that there is a brute force attack on a SHA1 hash must be 
+# performed before we are allowed to query the oracle.
+#
+#######################################################################
+
+
 SERVER = 'rabit.pwning.xxx'
 PORT = 7763
 
