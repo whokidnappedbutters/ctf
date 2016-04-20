@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+import sys
+sys.path.append('../')
+
 from util import *
 
 s = '1c0111001f010100061a024b53535009181c'
