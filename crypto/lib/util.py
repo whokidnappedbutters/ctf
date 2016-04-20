@@ -133,6 +133,10 @@ def lsb_attack (lsbfile, N):
         begin_numerator = 2 * begin_numerator
         end_numerator = 2 * end_numerator
         denominator = pow(2, count) 
+
+        if denominator > N:
+            break
+
         count = count + 1
 
         if digit == 1:
@@ -140,17 +144,13 @@ def lsb_attack (lsbfile, N):
         else:    
             end_numerator = end_numerator + 1
 
-        begin = N * begin_numerator / denominator
-        end = N * (denominator - end_numerator) / denominator
+    begin = N * begin_numerator / denominator
+    end = N * (denominator - end_numerator) / denominator
 
-        print("Digit: {0}".format(digit))
-        print("BegN:  {0}".format(begin_numerator))
-        print("EndN:  {0}".format(end_numerator))
-        print("Denom: {0}".format(denominator))
-        print("Begin: {0}".format(begin))
-        print("End:   {0}".format(end))
-        print("Diff:  {0}".format(end - begin))
-        print("\n")
+    # TODO: Need to check the padding and remove it before returning the hex string.  This may 
+    # involve looping through the potential results to find the correctly padded string
+
+    return format(begin, '02x')
 
 #
 # Brute force attacks to find partial hash collisions
