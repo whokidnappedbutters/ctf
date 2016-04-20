@@ -115,6 +115,44 @@ def frequency_attack1(s):
     return newstring
 
 #
+# LSB Oracle attack.  This function will compute P given a file
+# with the lsb values and the value of N
+#
+
+def lsb_attack (lsbfile, N):
+
+    infile = open(lsbfile, 'r')
+    digits = infile.read()
+    print("Number of digits: {0}".format(len(digits)))
+
+    count = 1
+    begin_numerator = 0
+    end_numerator = 0
+    for digit in digits:
+        digit = int(digit)
+        begin_numerator = 2 * begin_numerator
+        end_numerator = 2 * end_numerator
+        denominator = pow(2, count) 
+        count = count + 1
+
+        if digit == 1:
+            begin_numerator = begin_numerator + 1
+        else:    
+            end_numerator = end_numerator + 1
+
+        begin = N * begin_numerator / denominator
+        end = N * (denominator - end_numerator) / denominator
+
+        print("Digit: {0}".format(digit))
+        print("BegN:  {0}".format(begin_numerator))
+        print("EndN:  {0}".format(end_numerator))
+        print("Denom: {0}".format(denominator))
+        print("Begin: {0}".format(begin))
+        print("End:   {0}".format(end))
+        print("Diff:  {0}".format(end - begin))
+        print("\n")
+
+#
 # Brute force attacks to find partial hash collisions
 #
 
@@ -131,7 +169,7 @@ def brute_sha1_suffix (prefix, length):
         count = count + 1
         if count >= 1000000:
             print("New String: {0}".format(newstring))
-            count = 0		
+            count = 0        
  
         # Compute the sha1 hash
         hash_object = hashlib.sha1(newstring)
